@@ -42,5 +42,32 @@
   
   
   
+  <entry>
+    <title>字节抖音组一面面试题</title>
+    <link href="/2021/08/interview01-bd/"/>
+    <url>/2021/08/interview01-bd/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>时间复杂度 m*n and 按行遍历与按列遍历效率</p></li><li><p>排序 快排 希尔 归并 时间复杂度 和手写</p></li><li><p>Hash Map</p></li><li><p>java 字符串相等问题 a1 =StringBuffer(‘abc’) a2 =StringBuffer(‘abc’)  a1==a2 ?</p><p>b1 = ‘abc’  b2 = ‘abc’   b1==b2?</p><p>c1 = 42.0 c2 = 42.0     c1==c2 ?    d1 = 888.8  d2 = 888.8   d1 == d2? 说一下理由</p></li><li><p>赌徒问题</p></li><li><p>假设两个技巧相当的赌徒a和b,a取得2局及以上获胜,b取得3局及以上获胜,求a,b获胜的概率</p></li><li><p>链表代码题：将给定的单链表L： L 0→L 1→…→L n-1→L n, 重新排序为： L 0→L n →L 1→L n-1→L 2→L n-2→… 要求使用原地算法，并且不改变节点的（<a href="https://blog.csdn.net/weixin_44844089/article/details/104815928%EF%BC%89">https://blog.csdn.net/weixin_44844089/article/details/104815928）</a></p></li><li><p>其它补充：<a href="https://www.nowcoder.com/discuss/226749?type=0&amp;order=1&amp;pos=1&amp;page=1">https://www.nowcoder.com/discuss/226749?type=0&amp;order=1&amp;pos=1&amp;page=1</a></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>面经</category>
+      
+      <category>服务端</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面经</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
   
 </search>

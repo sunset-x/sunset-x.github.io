@@ -16,21 +16,39 @@
   <meta name="author" content="Jingxin Ma">
   <meta name="keywords" content="">
   
-    <meta name="description" content="马晶鑫的全栈技术分享博客 MaJingxin  Java技术 Python技术 前端技术 树莓派">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://sunset-x.github.io.com/categories/index.html">
+    <meta name="description" content="时间复杂度 m*n and 按行遍历与按列遍历效率  排序 快排 希尔 归并 时间复杂度 和手写  Hash Map  java 字符串相等问题 a1 &#x3D;StringBuffer(‘abc’) a2 &#x3D;StringBuffer(‘abc’)  a1&#x3D;&#x3D;a2 ? b1 &#x3D; ‘abc’  b2 &#x3D; ‘abc’   b1&#x3D;&#x3D;b2? c1 &#x3D; 42.0 c2 &#x3D; 42.0     c1&#x3D;&#x3D;c2 ?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字节抖音组一面面试题">
+<meta property="og:url" content="http://sunset-x.github.io.com/2021/08/interview01-bd/index.html">
 <meta property="og:site_name" content="Jingxin Blog">
-<meta property="og:description" content="马晶鑫的全栈技术分享博客 MaJingxin  Java技术 Python技术 前端技术 树莓派">
+<meta property="og:description" content="时间复杂度 m*n and 按行遍历与按列遍历效率  排序 快排 希尔 归并 时间复杂度 和手写  Hash Map  java 字符串相等问题 a1 &#x3D;StringBuffer(‘abc’) a2 &#x3D;StringBuffer(‘abc’)  a1&#x3D;&#x3D;a2 ? b1 &#x3D; ‘abc’  b2 &#x3D; ‘abc’   b1&#x3D;&#x3D;b2? c1 &#x3D; 42.0 c2 &#x3D; 42.0     c1&#x3D;&#x3D;c2 ?">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-08-18T07:41:21.000Z">
+<meta property="article:modified_time" content="2022-03-11T17:49:24.177Z">
 <meta property="article:author" content="Jingxin Ma">
+<meta property="article:tag" content="面经">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>分类 - Jingxin Blog</title>
+  <title>字节抖音组一面面试题 - Jingxin Blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -57,7 +75,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -158,9 +176,43 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="分类">
+            <span class="h2" id="subtitle" title="字节抖音组一面面试题">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-18 15:41" pubdate>
+        2021年8月18日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      455 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4 分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -173,98 +225,139 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-
-
-
-
-<div class="category-list">
-  
-  
-  
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-74a815616346a9f80558ba334cfc9fa6" role="tab" data-toggle="collapse" href="#collapse-74a815616346a9f80558ba334cfc9fa6"
-        aria-expanded="false"
-      >
-        面经
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E9%9D%A2%E7%BB%8F/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-74a815616346a9f80558ba334cfc9fa6" role="tabpanel" aria-labelledby="heading-74a815616346a9f80558ba334cfc9fa6">
-        
-        
-          
-          
-  <div class="category-post-list">
-    
-    
-  </div>
-
-          
-  
-  
-    
-    
-    <div class="category-sub row">
-      <a
-        class="category-subitem collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-55abea2d610bafc5e376e60e0b1d5642" role="tab" data-toggle="collapse" href="#collapse-55abea2d610bafc5e376e60e0b1d5642"
-        aria-expanded="false"
-      >
-        服务端
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E9%9D%A2%E7%BB%8F/%E6%9C%8D%E5%8A%A1%E7%AB%AF/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-55abea2d610bafc5e376e60e0b1d5642" role="tabpanel" aria-labelledby="heading-55abea2d610bafc5e376e60e0b1d5642">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
       
-      
-        <a href="/2021/08/interview01-bd/" class="list-group-item list-group-item-action">
-          <span class="category-post">字节抖音组一面面试题</span>
-        </a>
-      
-    
-  </div>
 
-        
-      </div>
-    </div>
-  
-        
-      </div>
-    </div>
-  
-</div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">字节抖音组一面面试题</h1>
+            
+            <div class="markdown-body">
+              <ol>
+<li><p>时间复杂度 m*n and 按行遍历与按列遍历效率</p>
+</li>
+<li><p>排序 快排 希尔 归并 时间复杂度 和手写</p>
+</li>
+<li><p>Hash Map</p>
+</li>
+<li><p>java 字符串相等问题 a1 =StringBuffer(‘abc’) a2 =StringBuffer(‘abc’)  a1==a2 ?</p>
+<p>b1 = ‘abc’  b2 = ‘abc’   b1==b2?</p>
+<p>c1 = 42.0 c2 = 42.0     c1==c2 ?    d1 = 888.8  d2 = 888.8   d1 == d2? 说一下理由</p>
+</li>
+<li><p>赌徒问题</p>
+</li>
+<li><p>假设两个技巧相当的赌徒a和b,a取得2局及以上获胜,b取得3局及以上获胜,求a,b获胜的概率</p>
+</li>
+<li><p>链表代码题：将给定的单链表L： L 0→L 1→…→L n-1→L n, 重新排序为： L 0→L n →L 1→L n-1→L 2→L n-2→… 要求使用原地算法，并且不改变节点的（<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44844089/article/details/104815928%EF%BC%89">https://blog.csdn.net/weixin_44844089/article/details/104815928）</a></p>
+</li>
+<li><p>其它补充：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/226749?type=0&amp;order=1&amp;pos=1&amp;page=1">https://www.nowcoder.com/discuss/226749?type=0&amp;order=1&amp;pos=1&amp;page=1</a></p>
+</li>
+</ol>
 
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E7%BB%8F/">面经</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%9D%A2%E7%BB%8F/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E7%BB%8F/">面经</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="twikoo"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js', function() {
+        var options = Object.assign(
+          {"envId":"https://twikoo-lac-ten.vercel.app","region":"ap-shanghai","path":"window.location.pathname"},
+          {
+            el: '#twikoo',
+            path: 'window.location.pathname',
+            onCommentLoaded: function() {
+              Fluid.plugins.initFancyBox('#twikoo .tk-content img:not(.tk-owo-emotion)');
+            }
+          }
+        )
+        twikoo.init(options)
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -347,6 +440,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 
